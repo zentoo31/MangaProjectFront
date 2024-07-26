@@ -9,8 +9,15 @@
             <li><a href="#" class="nav-link px-2">Peticiones</a></li>
         </ul>
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">Iniciar sesión</button>
-            <button type="button" class="btn btn-primary">Registrarse</button>
+            <button type="button" class="btn btn-primary me-2">Iniciar sesión</button>
+            <button type="button" class="btn btn-primary me-2">Registrarse</button>
+            <button type="button" class="btn btn-primary" (click)="actualizarBotonUI()">
+                @if(mode == 0){ 
+                    <i class="bi bi-moon-stars-fill"></i>
+                }@else{
+                    <i class="bi bi-brightness-high-fill"></i>
+                }
+            </button>
         </div>
     </header>
 </div>
