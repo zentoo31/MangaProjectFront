@@ -13,5 +13,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 })
 
 export class AppComponent {
-  title = 'login';
+  mode: number = 0;
+
+  reciviedNumber(value: number){
+    this.mode = value;
+    this.updateMode();
+  }
+
+  updateMode(){
+    if (this.mode == 1) {
+      document.body.setAttribute('data-bs-theme','light');
+    }else{
+      document.body.setAttribute('data-bs-theme','dark');
+    }
+  }
+
+  
 }

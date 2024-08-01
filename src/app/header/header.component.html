@@ -11,11 +11,11 @@
         <div class="col-md-3 text-end">
             <button type="button" class="btn btn-primary me-2">Iniciar sesión</button>
             <button type="button" class="btn btn-primary me-2">Registrarse</button>
-            <button type="button" class="btn btn-primary" (click)="actualizarBotonUI()">
+            <button type="button" class="btn btn-primary" (click)="actualizarBotonUI(); emitNumber()">
                 @if(mode == 0){ 
-                    <i class="bi bi-moon-stars-fill"></i>
-                }@else{
                     <i class="bi bi-brightness-high-fill"></i>
+                }@else{
+                    <i class="bi bi-moon-stars-fill"></i>
                 }
             </button>
         </div>
