@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, output } from '@angular/core';
-import { EventEmitter } from 'node:stream';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -11,6 +10,7 @@ import { EventEmitter } from 'node:stream';
 })
 export class HeaderComponent  {
   mode: number = 0;
+  constructor(private router: Router) {}
   numberEmit = output<number>();
   
   emitNumber(){
@@ -21,4 +21,7 @@ export class HeaderComponent  {
     this.mode = (this.mode + 1) % 2;
   }
 
+  goToLogin(){
+    this.router.navigate(['/login']);
+  }
 }
