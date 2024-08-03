@@ -1,12 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { fadeAnimation} from '../../animation';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
+  animations: [fadeAnimation]
 })
 export class HeaderComponent  {
   mode: number = 0;
