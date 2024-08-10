@@ -1,5 +1,38 @@
-
-.headerLink{
+header{
+    padding:15px;
+}
+.headerLink,
+.headerLink:hover,
+.headerLink:active,
+.headerLink:focus{
     color: var(--link-color);
-    text-decoration: none;
+    text-decoration: none;   
+}
+
+.btn{
+    background-color: #856AF7;
+    border-color:#856AF7;
+
+}
+
+input{
+    border-color: #856AF7;
+}
+
+input:hover,
+input:focus,
+input:active{
+    border-color: #E26AF7;
+}
+
+.btn:active {
+    background-color: #E26AF7;
+    border-color: #E26AF7;
+}
+
+a,
+a:active,
+a:hover,
+a:focus{
+    color: #856AF7;
 }

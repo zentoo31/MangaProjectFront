@@ -4,4 +4,4 @@ export const fadeAnimation = trigger('fadeAnimation', [
       style({ opacity: 0 }),
       animate('500ms', style({ opacity: 1 }))
     ])
-]);
+]); 

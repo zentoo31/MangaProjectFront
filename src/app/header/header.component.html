@@ -1,4 +1,3 @@
-<div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <div class="col-md-3 mb-2 mb-md-0">
             <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
@@ -11,9 +10,14 @@
         </div>
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li><a [routerLink]="['/home']" routerLinkActive="router-link-active" class="nav-link px-2">Inicio</a></li>
-            <li><a href="#" class="nav-link px-2">Directorio</a></li>
-            <li><a href="#" class="nav-link px-2">Peticiones</a></li>
+            <li><a [routerLink]="['/directory']" routerLinkActive="router-link-active" class="nav-link px-2">Directorio</a></li>
+            <li><a [routerLink]="['/requests']" routerLinkActive="router-link-active" class="nav-link px-2">Peticiones</a></li>
         </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+            <input type="search" class="form-control" placeholder="Buscar...">
+        </form>
+        
         <div class="col-md-3 text-end">
             <button type="button" class="btn btn-primary me-2" (click)="goToLogin()">Iniciar sesión</button>
             <button type="button" class="btn btn-primary me-2">Registrarse</button>
@@ -26,4 +30,3 @@
             </button>
         </div>
     </header>
-</div>
