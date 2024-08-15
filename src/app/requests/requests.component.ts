@@ -7,6 +7,15 @@ import { Component } from '@angular/core';
   templateUrl: './requests.component.html',
   styleUrl: './requests.component.css'
 })
-export class RequestsComponent {
 
+export class RequestsComponent {
+  
+  loadDisqus(){
+    (function(){
+      var d = document, s = d.createElement('script');
+      s.src = 'https://testpagecom.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', new Date().getTime.toString());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
 }

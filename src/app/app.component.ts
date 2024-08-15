@@ -32,20 +32,23 @@ export class AppComponent{
       globalThis.document.body.setAttribute('data-bs-theme','dark');
     }
   }
-  
   ngOnInit() {
     this.router.events.subscribe(event => {
       const progressBar = globalThis.document.querySelector('.progress-bar') as HTMLElement;
-      
-      if (event instanceof NavigationStart) {
-        progressBar.style.width = '0%';
-        progressBar.style.transition = 'width 0.4s ease';
-        setTimeout(() => progressBar.style.width = '50%', 100);  // Simula un proceso de carga inicial
-      }
-      
-      if (event instanceof NavigationEnd) {
-        setTimeout(() => progressBar.style.width = '100%', 400); // Completa la barra de progreso
-        setTimeout(() => progressBar.style.width = '0%', 600);   // Resetea la barra después de un breve tiempo
+
+      if (progressBar) { // Asegura que progressBar no es undefined
+        if (event instanceof NavigationStart) {
+          progressBar.style.width = '0%';
+          progressBar.style.transition = 'width 0.4s ease';
+          setTimeout(() => progressBar.style.width = '50%', 100);  // Simula un proceso de carga inicial
+        }
+
+        if (event instanceof NavigationEnd) {
+          setTimeout(() => progressBar.style.width = '100%', 400); // Completa la barra de progreso
+          setTimeout(() => progressBar.style.width = '0%', 600);   // Resetea la barra después de un breve tiempo
+        }
+      } else {
+        console.error('Progress bar element not found');
       }
     });
   }
