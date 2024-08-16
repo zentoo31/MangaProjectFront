@@ -1,1 +1,15 @@
-<p>manga works!</p>
+<div class="container">
+    <p>
+        {{manga.id}},
+        {{manga.nombre}},
+        @for (item of manga.categorias; track $index) {
+            {{item}}
+        },
+        {{manga.descripcion}},
+        {{manga.estado}},
+        {{manga.fecha_fin}},
+        {{manga.fecha_ini}}
+        <a [routerLink]="['/directory',manga.id]">Más...</a>
+    </p>
+    <img src="{{manga.portada}}" alt="{{manga.nombre}}">
+</div>
