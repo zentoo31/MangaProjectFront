@@ -4,7 +4,7 @@ export interface Manga {
     autor: string,
     portada: string,
     categorias: [string,string,string],
-    descriptcion: string,
+    descripcion: string,
     estado: string,
     fecha_fin: string,
     fecha_ini: string

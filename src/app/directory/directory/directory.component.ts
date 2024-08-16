@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Manga } from '../manga';
 
 @Component({
   selector: 'app-directory',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './directory.component.css'
 })
 export class DirectoryComponent {
+  @Input() manga!: Manga;
+  
 
 }

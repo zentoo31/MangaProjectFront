@@ -15,7 +15,7 @@ export class MangaComponent {
     autor: 'Eiichiro Oda',
     portada: 'https://cdn.myanimelist.net/images/manga/2/253146.jpg',
     categorias: ['aventura','acción','fantasía'],
-    descriptcion: 'Un joven pirata llamado Monkey D. Luffy se embarca en una aventura para encontrar el tesoro One Piece y convertirse en el Rey de los Piratas.',
+    descripcion: 'Un joven pirata llamado Monkey D. Luffy se embarca en una aventura para encontrar el tesoro One Piece y convertirse en el Rey de los Piratas.',
     estado: 'En emisión',
     fecha_fin: 'null',
     fecha_ini: '1997-07-22'
