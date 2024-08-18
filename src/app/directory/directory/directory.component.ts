@@ -14,9 +14,14 @@ MangaService
 
 export class DirectoryComponent {  
   mangaList: Manga[] = [];
+  filteredMangaList: Manga[] = [];
   mangaService: MangaService = inject(MangaService);
 
   constructor(){
-    this.mangaList = this.mangaService.getAllMangas();
+    this.mangaService.getAllMangasApi().then((manga:Manga[]) => {
+      this.mangaList = manga;
+      this.filteredMangaList = this.mangaList;
+    });
   }
+  
 }

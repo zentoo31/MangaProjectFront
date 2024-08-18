@@ -1,15 +1,15 @@
-<div class="container">
-    <p>
-        {{manga.id}},
-        {{manga.nombre}},
-        @for (item of manga.categorias; track $index) {
-            {{item}}
-        },
-        {{manga.descripcion}},
-        {{manga.estado}},
-        {{manga.fecha_fin}},
-        {{manga.fecha_ini}}
-        <a [routerLink]="['/directory',manga.id]">Más...</a>
-    </p>
-    <img src="{{manga.portada}}" alt="{{manga.nombre}}">
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{manga.medium_picture}}" class="img-fluid rounded-start" alt="{{manga.title}}" style="max-height: 180px;">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{manga.title}}</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit</p>
+            <a [routerLink]="['/directory', manga.id]" class="card-link">Más...</a>
+          </div>
+        </div>
+      </div>
 </div>

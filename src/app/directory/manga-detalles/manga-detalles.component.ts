@@ -16,7 +16,7 @@ export class MangaDetallesComponent {
   manga: Manga | undefined;
 
   constructor(){
-    const mangaId = this.route.snapshot.params['id'];
-    this.manga = this.mangaService.getMangaById(mangaId);
+    const mangaId = parseInt(this.route.snapshot.params['id'], 10);
+    // this.manga = this.mangaService.getMangaById(mangaId);
   }  
 }
