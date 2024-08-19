@@ -4,8 +4,7 @@ import { Manga } from '../directory/manga';
   providedIn: 'root'
 })
 export class MangaService {
-  url = 'http://localhost:3000/api/manga/top';
-
+  url = 'http://localhost:3000/api';
   constructor() { }
 
   // protected mangaList: Manga[] = [
@@ -74,7 +73,7 @@ export class MangaService {
 
   async getAllMangasApi(): Promise<Manga[]> {
     try {
-      const response = await fetch(this.url);
+      const response = await fetch(`${this.url}/manga/top`);
       const data = await response.json();
       return data ?? []; 
     } catch (error) {
@@ -82,9 +81,9 @@ export class MangaService {
       return []; 
     }
   }
-  
+
   async getMangaById(id: number): Promise<Manga | undefined>{
-    const data = await fetch(`${this.url}/${id}`);
+    const data = await fetch(`${this.url}/anime/${id}`);
     return (await data.json() ?? {});
   } 
 
