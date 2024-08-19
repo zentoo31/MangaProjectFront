@@ -1,7 +1,12 @@
 export interface Manga {
     id: number;
     title: string;
-    medium_picture: string;
-    large_picture: string;
+    main_picture: {
+      medium: string;
+      large: string;
+    };
     rank: number;
+    synopsis: string;
+    start_date: string;
+    end_date: string;
 }

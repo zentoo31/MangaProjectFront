@@ -32,6 +32,7 @@ export class AppComponent{
       globalThis.document.body.setAttribute('data-bs-theme','dark');
     }
   }
+
   ngOnInit() {
     this.router.events.subscribe(event => {
       const progressBar = globalThis.document.querySelector('.progress-bar') as HTMLElement;
@@ -51,6 +52,8 @@ export class AppComponent{
         console.error('Progress bar element not found');
       }
     });
+
+    
   }
   
 }

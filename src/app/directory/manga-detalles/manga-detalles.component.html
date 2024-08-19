@@ -1,6 +1,8 @@
 <div class="container">
     <p>{{manga?.id}}</p>
     <p>{{manga?.title}}</p>
-    <p>{{manga?.rank}}</p>
-    <img src="{{manga?.medium_picture}}" alt="">
+    <img src="{{manga?.main_picture?.medium}}" alt="">
+    <p>{{manga?.synopsis}}</p>
+    <span>Fecha de publicación: {{manga?.start_date}} </span>
+    <span>Fecha de finalización: {{manga?.end_date}}</span>
 </div>
