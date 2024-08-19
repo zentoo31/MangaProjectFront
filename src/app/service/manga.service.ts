@@ -76,18 +76,17 @@ export class MangaService {
     try {
       const response = await fetch(this.url);
       const data = await response.json();
-      console.log('Fetched data:', data); // Verificar los datos obtenidos
-      return data ?? []; // Retornar los datos o un array vacío si es null o undefined
+      return data ?? []; 
     } catch (error) {
       console.error('Error fetching data:', error);
-      return []; // Retornar un array vacío en caso de error
+      return []; 
     }
   }
-  // getAllMangas(): Manga[]{
-  //   return this.mangaList;
-  // }
+  
+  async getMangaById(id: number): Promise<Manga | undefined>{
+    const data = await fetch(`${this.url}/${id}`);
+    return (await data.json() ?? {});
+  } 
 
-  // getMangaById(id: string): Manga | undefined {
-  //   return this.mangaList.find((manga) => manga.id === id);
-  // }
+
 }

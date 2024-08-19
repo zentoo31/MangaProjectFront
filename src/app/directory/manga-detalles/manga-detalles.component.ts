@@ -17,6 +17,11 @@ export class MangaDetallesComponent {
 
   constructor(){
     const mangaId = parseInt(this.route.snapshot.params['id'], 10);
-    // this.manga = this.mangaService.getMangaById(mangaId);
-  }  
+    this.mangaService.getMangaById(mangaId).then((manga => {
+      this.manga = manga;
+    }));
+  }
+  
+  
+
 }
