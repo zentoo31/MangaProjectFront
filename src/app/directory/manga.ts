@@ -9,4 +9,12 @@ export interface Manga {
     synopsis: string;
     start_date: string;
     end_date: string;
+    mean:number;
+    num_scoring_users:number;
+    status:string;
+    genres:{
+      id:number,
+      name:string
+    }[];
+    
 }

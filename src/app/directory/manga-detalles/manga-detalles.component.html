@@ -5,4 +5,9 @@
     <p>{{manga?.synopsis}}</p>
     <span>Fecha de publicación: {{manga?.start_date}} </span>
     <span>Fecha de finalización: {{manga?.end_date}}</span>
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        @for (item of manga?.genres; track $index) {
+            <mat-button-toggle>{{item.name}}</mat-button-toggle>
+        }
+    </mat-button-toggle-group>
 </div>
