@@ -28,8 +28,10 @@ export class AppComponent{
   updateMode(){
     if (this.mode == 1) {
       globalThis.document.body.setAttribute('data-bs-theme','light');
+      globalThis.document.body.classList.replace('dark','light');
     }else{
       globalThis.document.body.setAttribute('data-bs-theme','dark');
+      globalThis.document.body.classList.replace('light','dark');
     }
   }
   ngOnInit() {

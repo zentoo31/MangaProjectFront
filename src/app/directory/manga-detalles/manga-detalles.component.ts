@@ -2,12 +2,15 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MangaService } from '../../service/manga.service';
 import { Manga } from '../manga';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @Component({
   selector: 'app-manga-detalles',
   standalone: true,
-  imports: [MatButtonToggleModule],
+  imports: [MatChipsModule, MatIconModule, MatButtonModule],
   templateUrl: './manga-detalles.component.html',
   styleUrl: './manga-detalles.component.css'
 })
