@@ -1,11 +1,10 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MangaComponent } from "../manga/manga.component";
 import { Manga } from '../manga';
 import { MangaService } from '../../service/manga.service';
 import { RouterLink } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
-
 @Component({
   selector: 'app-directory',
   standalone: true,
@@ -25,39 +24,58 @@ import { trigger, transition, style, animate } from '@angular/animations';
   ]
 })
 
-export class DirectoryComponent {  
+export class DirectoryComponent {
   mangaList: Manga[] = [];
-  mangaService: MangaService = inject(MangaService);
-  counterPagination: number = 0o0;
+  mangaService = inject(MangaService);
+  counterPagination: number = 0;
+  titleSearch: string = "";
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      this.titleSearch = params['title'] || ''; // Obtiene el parámetro 'title'
       this.counterPagination = +params['counterPagination'] || 0;
+      this.loadData();
+    });
+    
+    document.title = "MangaIn: Directorio";
+  }
 
-      this.mangaService.getAllMangasApi(this.counterPagination).then((manga: Manga[]) => {
+  loadData() {
+    if (this.titleSearch) {
+      // Buscar mangas por título
+      this.mangaService.getMangasByTitle(this.titleSearch).then(manga => {
         this.mangaList = manga;
         this.updatePagination();
+      }).catch(error => {
+        console.error('Error fetching mangas by title:', error);
       });
-    });  
-    globalThis.document.title = "MangaIn: Directorio";
+    } else {
+      // Obtener todos los mangas
+      this.mangaService.getAllMangasApi(this.counterPagination).then(manga => {
+        this.mangaList = manga;
+        this.updatePagination();
+      }).catch(error => {
+        console.error('Error fetching all mangas:', error);
+      });
+    }
   }
-  
+
   updatePagination() {
     if (this.mangaList.length > 3 && this.mangaList[3].paging.previus == null) {
-      const pageItem = document.querySelector('.page-item.enabled');
+      const pageItem = globalThis?.document?.querySelector('.page-item.enabled');
       if (pageItem) {
         pageItem.classList.replace('enabled', 'disabled');
       }
-    }else{
-      const pageItem = document.querySelector('.page-item.disabled');
+    } else {
+      const pageItem = globalThis?.document?.querySelector('.page-item.disabled');
       if (pageItem) {
         pageItem.classList.replace('disabled', 'enabled');
       }
     }
   }
-  
+
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }

@@ -1,3 +1,9 @@
 a{
     color:#856AF7;
 }
+
+h6{
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

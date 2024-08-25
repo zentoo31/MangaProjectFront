@@ -78,7 +78,7 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
           <li class="page-item enabled"><a class="page-link">Previous</a></li>
-          <li class="page-item"><a class="page-link" [routerLink]="['/directory/' + (counterPagination + 50)]" routerLinkActive="router-link-active" (click)="scrollToTop(); $event.preventDefault()">Next</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="['/directory/' + (counterPagination + 50) + '/' + titleSearch]" routerLinkActive="router-link-active" (click)="scrollToTop(); $event.preventDefault()">Next</a></li>
         </ul>
     </nav>
 </div>

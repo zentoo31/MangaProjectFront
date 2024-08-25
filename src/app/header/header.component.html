@@ -15,7 +15,7 @@
         </ul>
 
         <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-            <input type="search" class="form-control" placeholder="Buscar..." >
+            <input type="search" class="form-control" placeholder="Buscar..." #filter (keydown.enter) ="sendData(filter.value); $event.preventDefault()" >
         </form>
         
         <div class="col-md-3 text-end">

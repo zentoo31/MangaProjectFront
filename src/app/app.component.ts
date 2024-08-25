@@ -36,7 +36,7 @@ export class AppComponent{
   }
   ngOnInit() {
     this.router.events.subscribe(event => {
-      const progressBar = globalThis.document.querySelector('.progress-bar') as HTMLElement;
+      const progressBar = globalThis?.document?.querySelector('.progress-bar') as HTMLElement;
 
       if (progressBar) { // Asegura que progressBar no es undefined
         if (event instanceof NavigationStart) {

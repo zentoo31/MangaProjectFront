@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, output } from '@angular/core';
+import { Component, EventEmitter, output } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { fadeAnimation} from '../../animation';
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -14,7 +15,12 @@ export class HeaderComponent  {
   mode: number = 0;
   constructor(private router: Router) {}
   numberEmit = output<number>();
-  
+
+  sendData(inputValue: string){
+    const formattedValue = inputValue.replace(/ /g, '+');
+    this.router.navigate(['/directory/', "00/", formattedValue]);
+  }
+
   emitNumber(){
     this.numberEmit.emit(this.mode);
   }

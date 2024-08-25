@@ -7,6 +7,7 @@ import { RequestsComponent } from './requests/requests.component';
 import { MangaDetallesComponent } from './directory/manga-detalles/manga-detalles.component';
 export const routes: Routes = [
     {path:'home', component: DashboardComponent},
+    {path:'directory/:counterPagination/:title', component: DirectoryComponent},
     {path:'directory/:counterPagination', component: DirectoryComponent},
     {path: 'manga/:id', component: MangaDetallesComponent},
     {path:'login', component: LoginComponent},
