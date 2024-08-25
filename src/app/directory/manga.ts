@@ -12,9 +12,13 @@ export interface Manga {
     mean:number;
     num_scoring_users:number;
     status:string;
+    media_type: string;
     genres:{
       id:number,
       name:string
     }[];
-    
+    paging:{
+      previus: string,
+      next: string
+    }
 }

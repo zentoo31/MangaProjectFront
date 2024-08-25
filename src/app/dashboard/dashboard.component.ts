@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
- 
+  constructor(){
+    globalThis.document.title = "MangaIn: Inicio";
+  }
 }

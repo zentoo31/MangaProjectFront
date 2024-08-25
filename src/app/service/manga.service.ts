@@ -7,9 +7,9 @@ export class MangaService {
   url = 'http://localhost:3000/api';
   constructor() { }
 
-  async getAllMangasApi(): Promise<Manga[]> {
+  async getAllMangasApi(parm: number = 0o0): Promise<Manga[]> {
     try {
-      const response = await fetch(`${this.url}/manga/top`);
+      const response = await fetch(`${this.url}/manga/top/${parm}`);
       const data = await response.json();
       return data ?? []; 
     } catch (error) {

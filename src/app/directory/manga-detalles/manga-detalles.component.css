@@ -1,7 +1,16 @@
 .div{
-    margin: 20px;
+    margin: 10px;
 }
 
 .mat-mini-fab{
     margin-top: 10px;
+}
+
+.image{
+    width: auto;
+    height: 450px;
+}
+
+.progress-bar{
+    background-color: #856AF7;
 }

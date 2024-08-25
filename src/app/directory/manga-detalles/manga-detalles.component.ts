@@ -23,9 +23,10 @@ export class MangaDetallesComponent {
     const mangaId = parseInt(this.route.snapshot.params['id'], 10);
     this.mangaService.getMangaById(mangaId).then((manga => {
       this.manga = manga;
+      document.title = "MangaIn: " + this.manga?.title;
     }));
   }
   
-  
-
+  ngOnInit(){
+  }
 }

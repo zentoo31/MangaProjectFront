@@ -1,33 +1,34 @@
 <div class="container border-bottom" >
     <h3 class="text-center">{{manga?.title}}</h3> 
     <div class="d-flex flex-column flex-md-row">
-        <img src="{{manga?.main_picture?.medium}}" alt="" class="mb-3">
+        <img src="{{manga?.main_picture?.medium}}" alt="" class="mb-3 image">
         <div class="align-items-center div">
-            <p>{{manga?.synopsis}}</p>
+            <p style="margin: 10px;">{{manga?.synopsis}}</p>
                 <div class="d-flex flex-column flex-md-row">
                     <div class="align-items-center div">
                         <span>Fecha de publicación: <mat-chip>{{manga?.start_date}}</mat-chip> </span>
                         <span><br>Fecha de finalización: <mat-chip>{{manga?.end_date ?? '-----'}}</mat-chip></span>
-                        <span><br>Estado: <mat-chip>{{manga?.status}}</mat-chip> </span>
-                        <span><br>Géneros: </span>
+                        <span><br>Estado: <br><mat-chip>{{manga?.status}}</mat-chip> </span>
+                        <span><br>Tipo: <br><mat-chip>{{manga?.media_type}}</mat-chip> </span>
+                        <span><br>Géneros:</span>
                         <mat-chip-set>
                             @for (item of manga?.genres; track $index) {
                                 <mat-chip>{{item.name}}</mat-chip>
                             }               
                         </mat-chip-set>
+                    </div>
+                    <div class="container d-flex flex-column align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#856AF7" class="bi bi-star-half" viewBox="0 0 16 16">
+                            <path d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z"/>
+                        </svg>
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="height: 15px; width: 200px;">
+                            <div class="progress-bar" [style.width.%]="(manga?.mean ?? 0) / 10 * 100" >{{manga?.mean}}</div>
+                        </div>
+                        <span>{{manga?.num_scoring_users?.toLocaleString()}} usuarios</span>
                         <button mat-fab extended class="mat-mini-fab">
                             <mat-icon>favorite</mat-icon>
                             Agregar
                         </button>
-                    </div>
-                    <div class="container text-end">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="yellow" class="bi bi-star-half" viewBox="0 0 16 16">
-                            <path d="M5.354 5.119 7.538.792A.52.52 0 0 1 8 .5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.54.54 0 0 1 16 6.32a.55.55 0 0 1-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256a.5.5 0 0 1-.146.05c-.342.06-.668-.254-.6-.642l.83-4.73L.173 6.765a.55.55 0 0 1-.172-.403.6.6 0 0 1 .085-.302.51.51 0 0 1 .37-.245zM8 12.027a.5.5 0 0 1 .232.056l3.686 1.894-.694-3.957a.56.56 0 0 1 .162-.505l2.907-2.77-4.052-.576a.53.53 0 0 1-.393-.288L8.001 2.223 8 2.226z"/>
-                        </svg>
-                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar bg-warning w-75" style="width: 0%">{{manga?.mean}}</div>
-                        </div>
-                        <span>{{manga?.num_scoring_users}} usuarios</span>
                     </div>
             </div>
         </div>

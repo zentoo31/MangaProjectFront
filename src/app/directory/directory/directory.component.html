@@ -1,8 +1,8 @@
 <div class="container">
     @defer {
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4" >
             @for (item of mangaList; track $index) {
-                <app-manga [manga]="item"></app-manga>
+                <app-manga [manga]="item" [@fadeAnimation]></app-manga>
             }
         </div>
     }@placeholder {
@@ -77,11 +77,8 @@
     }
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          <li class="page-item enabled"><a class="page-link">Previous</a></li>
+          <li class="page-item"><a class="page-link" [routerLink]="['/directory/' + (counterPagination + 50)]" routerLinkActive="router-link-active" (click)="scrollToTop(); $event.preventDefault()">Next</a></li>
         </ul>
     </nav>
 </div>
