@@ -1,1 +1,68 @@
-<p>login works!</p>
+<div class="container py-5 h-100 cardo">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="https://i.pinimg.com/736x/4b/b8/e9/4bb8e931640dcff50f8e670c86919e1b.jpg"
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; width: 400px; height: auto;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+                <form>
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="#856AF7" class="bi bi-bootstrap-fill" viewBox="0 0 16 16">
+                        <path d="M6.375 7.125V4.658h1.78c.973 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23zm0 3.762h1.898c1.184 0 1.81-.48 1.81-1.377 0-.885-.65-1.348-1.886-1.348H6.375z"/>
+                        <path d="M4.002 0a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4zm1.06 12V3.545h3.399c1.587 0 2.543.809 2.543 2.11 0 .884-.65 1.675-1.483 1.816v.1c1.143.117 1.904.931 1.904 2.033 0 1.488-1.084 2.396-2.888 2.396z"/>
+                      </svg>
+                    <span class="h1 fw-bold mb-0 general">MangaIn</span>
+                  </div>
+
+                  <h5 class="fw-normal mb-3 pb-3 general" style="letter-spacing: 1px;">Ingresa a tu cuenta</h5>
+                
+                  <div class="d-flex flex-column">
+                    <mat-form-field class="form-outline mb-4">
+                      <mat-label>Ingresa tu correo</mat-label>
+                      <input 
+                        matInput
+                        placeholder="correo@ejemplo.com"
+                        [formControl]="email"
+                        (blur)="updateErrorMessage()"
+                        required/>
+                        @if (email.invalid) {
+                            <mat-error>{{errorMessage()}}</mat-error>
+                        }
+                    </mat-form-field>
+                  
+                    <mat-form-field class="form-outline mb-4">
+                      <mat-label>Ingresa tu contraseña</mat-label>
+                      <input matInput [type]="hide() ? 'password' : 'text'" />
+                      <button 
+                        class="btn_eye"
+                        mat-icon-button
+                        matSuffix
+                        (click)="clickEvent($event)"
+                        [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide()">
+                        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>                  
+                    <section>
+                        <div class="example-button-row">
+                            <button mat-flat-button>Iniciar sesión</button>
+                        </div>
+                    </section>
+                    <a class="small text-muted" href="#!">¿Olvidaste tu contraseña?</a>
+                    <p class="mb-5 pb-lg-2" style="color: #856AF7;">¿No tienes una cuenta? <a href="#!"
+                        style="color: #856AF7;">Regístrate</a></p>
+                    <a href="#!" class="small text-muted">Terms of use.</a>
+                    <a href="#!" class="small text-muted">Privacy policy</a>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
