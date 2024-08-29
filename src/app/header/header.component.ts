@@ -29,7 +29,7 @@ export class HeaderComponent  {
     this.mode = (this.mode + 1) % 2;
   }
 
-  goToLogin(){
-    this.router.navigate(['/login']);
+  goTo(ruta: String){
+    this.router.navigate([ruta]);
   }
 }

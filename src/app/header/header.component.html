@@ -19,8 +19,8 @@
         </form>
         
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-primary me-2" (click)="goToLogin()">Iniciar sesión</button>
-            <button type="button" class="btn btn-primary me-2">Registrarse</button>
+            <button type="button" class="btn btn-primary me-2" (click)="goTo('/login')">Iniciar sesión</button>
+            <button type="button" class="btn btn-primary me-2" (click)="goTo('/register')">Registrarse</button>
             <button type="button" class="btn btn-primary" (click)="actualizarBotonUI(); emitNumber()">
                 @if(mode == 0){ 
                     <i class="bi bi-brightness-high-fill"></i>
