@@ -1,6 +1,6 @@
 import { Component,ChangeDetectionStrategy,signal } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule, Validators, FormGroup} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
@@ -18,12 +18,24 @@ import {merge} from 'rxjs';
 })
 export class LoginComponent {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
+  readonly password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   errorMessage = signal('');
+  errorMessage2 = signal('');
+  formulario: FormGroup;
 
   constructor(){
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(()=> this.updateErrorMessage());
+    
+      merge(this.password.statusChanges, this.password.valueChanges)
+      .pipe(takeUntilDestroyed())
+      .subscribe(()=> this.updateErrorMessage2());
+
+    this.formulario  = new FormGroup({
+      email: this.email,
+      password: this.password
+    });
   }
 
   updateErrorMessage() {
@@ -36,7 +48,18 @@ export class LoginComponent {
     }
   }
 
+  updateErrorMessage2(){
+    if (this.password.hasError('required' )) {
+      this.errorMessage2.set('Ingresa una contraseña!');
+    } else if (this.password.hasError('minlength')) {
+      this.errorMessage2.set('La contraseña debe ser mayor a 8 dígitos');
+    } else {
+      this.errorMessage2.set('');
+    }
+  }
+
   hide = signal(true);
+  
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
