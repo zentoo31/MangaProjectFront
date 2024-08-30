@@ -14,35 +14,37 @@ export class UsersService {
     try {
       return await firstValueFrom(
         this.httpClient.post<any>(`${this.baseUrl}/register`, formValue).pipe(
-          catchError((error) => this.handleError(error)) // Asegúrate de pasar el error aquí
+          catchError((error) => this.handleError(error)) 
         )
       );
     } catch (error) {
-      throw error; // Propaga el error para manejarlo donde se llame esta función
+      throw error; 
+    }
+  }
+
+  async login(formValue: any){
+    try {
+      return await firstValueFrom(
+        this.httpClient.post<any>(`${this.baseUrl}/login`, formValue).pipe(
+          catchError((error)=> this.handleError(error))
+        )
+      );
+    } catch (error) {
+      throw error;
     }
   }
 
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ha ocurrido un error inesperado';
-
     if (error.error instanceof ErrorEvent) {
-      // Error del cliente o de la red
-      // console.error('An error occurred:', error.error.message);
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      // console.error(
-      //   `Backend returned code ${error.status}, ` +
-      //   `body was: ${JSON.stringify(error.error)}`
-      // );
-
       if (error.error && error.error.message) {
-        errorMessage = error.error.message; // Utiliza el mensaje de error del backend
+        errorMessage = error.error.message;
       } else {
         errorMessage = 'Error desconocido en el servidor';
       }
     }
-
-    // Retorna el mensaje de error para que se propague
     return throwError(() => new Error(errorMessage));
   }
 }

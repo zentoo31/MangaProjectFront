@@ -9,7 +9,7 @@
   import {toSignal} from '@angular/core/rxjs-interop';
   import {map} from 'rxjs/operators';
   import { UsersService } from '../service/users.service';
-
+  import { Router } from '@angular/router';
   @Component({
     selector: 'app-register',
     standalone: true,
@@ -20,22 +20,26 @@
 
   export class RegisterComponent {
     readonly email = new FormControl('', [Validators.required, Validators.email]);
+    readonly password = new FormControl('', [Validators.required, Validators.minLength(8)]);
     readonly floatLabelControl = new FormControl('auto' as FloatLabelType);
     errorMessage = signal('');
+    errorMessage2 = signal('');
     formulario: FormGroup;
     message!: String;
     userService = inject(UsersService);
-
-
-    constructor(){
+    constructor(private router: Router){
       merge(this.email.statusChanges, this.email.valueChanges)
         .pipe(takeUntilDestroyed())
         .subscribe(()=> this.updateErrorMessage());
 
+      merge(this.password.statusChanges, this.password.valueChanges)
+      .pipe(takeUntilDestroyed())
+      .subscribe(()=> this.updateErrorMessage2());
+
       this.formulario = new FormGroup({
         username: new FormControl('',Validators.required),
         email: this.email,
-        password: new FormControl('',Validators.required)
+        password: this.password
       });
     }
 
@@ -46,6 +50,16 @@
         this.errorMessage.set('No es un correo válido');
       } else {
         this.errorMessage.set('');
+      }
+    }
+
+    updateErrorMessage2(){
+      if (this.password.hasError('required' )) {
+        this.errorMessage2.set('Ingresa una contraseña!');
+      } else if (this.password.hasError('minlength')) {
+        this.errorMessage2.set('La contraseña debe ser mayor a 8 dígitos');
+      } else {
+        this.errorMessage2.set('');
       }
     }
 
@@ -62,6 +76,9 @@
           const response = await this.userService.register(this.formulario.value);
           if (response === true) { 
             this.message = 'Registro exitoso'; 
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+            }, 1000);
           } else {
             this.message = 'Registro fallido';
           }
