@@ -20,7 +20,7 @@
 
                   <h5 class="fw-normal mb-3 pb-3 general" style="letter-spacing: 1px;">Ingresa a tu cuenta</h5>
                 
-                  <form class="d-flex flex-column" [formGroup]="formulario">
+                  <form class="d-flex flex-column" [formGroup]="formulario" (ngSubmit)="onSubmit()">
                     <mat-form-field class="form-outline mb-4">
                       <mat-label>Ingresa tu correo</mat-label>
                       <input 

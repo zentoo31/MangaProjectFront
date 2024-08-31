@@ -1,11 +1,11 @@
-import { Component,ChangeDetectionStrategy,signal } from '@angular/core';
+import { Component,ChangeDetectionStrategy,signal, inject } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators, FormGroup} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-
+import { UsersService } from '../service/users.service';
 import {merge} from 'rxjs';
 
 @Component({
@@ -19,8 +19,10 @@ import {merge} from 'rxjs';
 export class LoginComponent {
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   readonly password = new FormControl('', [Validators.required, Validators.minLength(8)]);
+  userService = inject(UsersService);
   errorMessage = signal('');
   errorMessage2 = signal('');
+  message!: String;
   formulario: FormGroup;
 
   constructor(){
@@ -64,4 +66,18 @@ export class LoginComponent {
     this.hide.set(!this.hide());
     event.stopPropagation();
   }
+
+  async onSubmit(){
+    if (this.formulario.valid) {
+      try {
+        const response = await this.userService.login(this.formulario.value);
+        console.log(response);
+      } catch (error: any) {
+        this.message = error.message;
+      }
+    }
+  }
+
+
+
 }

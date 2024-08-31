@@ -25,7 +25,7 @@ export class UsersService {
   async login(formValue: any){
     try {
       return await firstValueFrom(
-        this.httpClient.post<any>(`${this.baseUrl}/login`, formValue).pipe(
+        this.httpClient.post<any>(`${this.baseUrl}/login`, formValue, {withCredentials: true}).pipe(
           catchError((error)=> this.handleError(error))
         )
       );

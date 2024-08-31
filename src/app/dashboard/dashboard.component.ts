@@ -9,6 +9,8 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   constructor(){
+  }
+  onInit(){
     globalThis.document.title = "MangaIn: Inicio";
   }
 }
