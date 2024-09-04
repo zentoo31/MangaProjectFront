@@ -51,6 +51,11 @@
                         <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                     </mat-form-field>
+                    @if (message == "contraseña incorrecta" || message == "El usuario no existe") {
+                      <mat-error>{{message}}</mat-error>
+                    }@else {
+                      <mat-error style="color: greenyellow;">{{message}}</mat-error>
+                    }
                     <div class="example-button-row">
                       <button mat-flat-button>Iniciar sesión</button>
                     </div>

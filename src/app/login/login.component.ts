@@ -71,7 +71,10 @@ export class LoginComponent {
     if (this.formulario.valid) {
       try {
         const response = await this.userService.login(this.formulario.value);
-        console.log(response);
+        if (response && response.sucess) {
+          this.message = "Inicio de sesión exitoso";
+          console.log(response);
+        }
       } catch (error: any) {
         this.message = error.message;
       }

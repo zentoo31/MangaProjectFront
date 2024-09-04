@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { MangaComponent } from "../manga/manga.component";
 import { Manga } from '../manga';
 import { MangaService } from '../../service/manga.service';
 import { RouterLink } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-directory',
   standalone: true,
@@ -29,7 +30,6 @@ export class DirectoryComponent {
   mangaService = inject(MangaService);
   counterPagination: number = 0;
   titleSearch: string = "";
-
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
