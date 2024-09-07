@@ -1,9 +1,79 @@
-a{
-    color:#856AF7;
+.manga {
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Ajusta el tamaño según sea necesario */
 }
+  
+.manga img {
+    display: block;
+    width: 100%; /* Hace que la imagen ocupe todo el ancho disponible */
+    height: auto;
+    max-height: 170px;
+}
+  
+  .manga .content {
+    position: absolute;
+    bottom: 0; /* Alinea el contenido al fondo de la imagen */
+    width: 100%; 
+    height: 25%;
+    background-color: rgba(121, 25, 231, 0.6); /* Fondo negro con transparencia del 60% */
+    text-align: center; /* Centra el texto horizontalmente */
+    padding: 10px; /* Espaciado interno del contenido */
+    transition: height 0.2s ease, transform 0.2s ease; /* Añade transiciones para altura y transformación */
 
-h6{
-    height: 40px;
+  }
+  .manga:hover .content {
+    height: 30%;
+  }
+  
+  .manga .content a {
+    color: white; /* Cambia el color del texto */
+    font-size: 14px; /* Tamaño del texto */
+    text-decoration: none;
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+/* Para pantallas pequeñas, como iPhone estándar (máx. 390px) */
+@media (max-width: 390px) {
+    .manga img {
+      max-height: 200px;
+    }
+}
+
+/* Para pantallas medianas, como tablets y móviles grandes (máx. 768px) */
+@media (max-width: 768px) {
+    .manga img {
+      max-height: 230px;
+    }
+}
+
+/* Para pantallas medianas y grandes (mín. 769px y máx. 1280px) */
+@media (min-width: 769px) and (max-width: 1280px) {
+    .manga img {
+      max-height: 115px;
+    }
+}
+
+/* Para pantallas más grandes (mín. 1281px y máx. 1440px) */
+@media (min-width: 1281px) and (max-width: 1440px) {
+    .manga img {
+        max-height: 120px;
+    }
+}
+
+/* Para pantallas más grandes (mín. 1441px y máx. 1920px) */
+@media (min-width: 1441px) and (max-width: 1920px) {
+    .manga img {
+        max-height: 170px; /* Ajusta la altura máxima a 170px */
+    }
+}
+
+/* Para pantallas mayores a 1920px */
+@media (min-width: 1921px) {
+    .manga img {
+        max-height: 180px;
+    }
 }

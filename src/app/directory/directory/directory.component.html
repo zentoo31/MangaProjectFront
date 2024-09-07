@@ -1,12 +1,21 @@
-<div class="container">
+
+
+<div class="wrapper">
+  <div class="left-content">
+    <!-- Contenido del lado izquierdo -->
+    <p>Contenido a la izquierda</p>
+  </div>
+  <div class="container" style="height: auto;">
+    <h1>Resultados: </h1>
+    <hr>
     @defer {
-        <div class="row row-cols-1 row-cols-md-3 g-4" >
+        <div class="row row-cols-2 row-cols-md-6 g-4">
             @for (item of mangaList; track $index) {
                 <app-manga [manga]="item" [@fadeAnimation]></app-manga>
             }
         </div>
     }@placeholder {
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-2 row-cols-md-6 g-4">
             <div class="card mb-3" style="max-width: 540px;">
               <div class="row g-0">
                 <div class="col-md-4">
@@ -77,8 +86,9 @@
     }
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-          <li class="page-item enabled"><a class="page-link">Previous</a></li>
+          <li class="page-item enabled"><a class="page-link" [routerLink]="['/directory/' + (counterPagination - 50) + '/' + titleSearch]" routerLinkActive="router-link-active" (click)="scrollToTop(); $event.preventDefault()">Previous</a></li>
           <li class="page-item"><a class="page-link" [routerLink]="['/directory/' + (counterPagination + 50) + '/' + titleSearch]" routerLinkActive="router-link-active" (click)="scrollToTop(); $event.preventDefault()">Next</a></li>
         </ul>
     </nav>
+</div>
 </div>

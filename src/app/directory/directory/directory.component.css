@@ -1,3 +1,35 @@
 .page-link{
     color: #856AF7;
 }
+/* Estilos para pantallas grandes */
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .left-content {
+    background-color: #856AF7;
+  }
+  
+  .container {
+    /* Estilo opcional para el contenedor */
+  }
+  
+  /* Estilos para pantallas pequeñas */
+  @media (min-width:768px){
+    .container{
+        width: 50%; 
+    }   
+}
+
+  @media (max-width: 768px) {
+    .wrapper {
+      flex-direction: column; /* Cambia la dirección del layout a columna */
+      align-items: flex-start; /* Alinea el contenido al inicio del contenedor */
+    }
+  
+    .left-content {
+      margin-bottom: 10px; /* Espacio opcional entre el contenido izquierdo y el contenedor */
+    }
+  }

@@ -1,15 +1,7 @@
 
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-          <img src="{{manga.main_picture.medium}}" class="img-fluid rounded-start" alt="{{manga.title}}" style="max-height: 180px;">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h6 class="card-title">{{manga.title}}</h6>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit</p>
-            <a [routerLink]="['/manga', manga.id]" class="card-link">Más...</a>
-          </div>
-        </div>
-      </div>
+<div class="manga">
+  <a [routerLink]="['/manga', manga.id]"><img src="{{manga.main_picture.medium}}" alt="{{manga.title}}"></a>
+  <div class="content">
+    <a [routerLink]="['/manga', manga.id]">{{manga.title}}</a>
+  </div>
 </div>
