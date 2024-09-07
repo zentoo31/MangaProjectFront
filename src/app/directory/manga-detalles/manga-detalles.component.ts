@@ -5,12 +5,12 @@ import { Manga } from '../manga';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-
+import { RequestsComponent } from '../../requests/requests.component';
 
 @Component({
   selector: 'app-manga-detalles',
   standalone: true,
-  imports: [MatChipsModule, MatIconModule, MatButtonModule],
+  imports: [MatChipsModule, MatIconModule, MatButtonModule,RequestsComponent],
   templateUrl: './manga-detalles.component.html',
   styleUrl: './manga-detalles.component.css'
 })

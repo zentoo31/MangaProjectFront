@@ -9,13 +9,17 @@ import { Component } from '@angular/core';
 })
 
 export class RequestsComponent {
+  ngOnInit(){
+    this.loadDisqus();
+  }
   
-  loadDisqus(){
-    (function(){
-      var d = document, s = d.createElement('script');
-      s.src = 'https://testpagecom.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', new Date().getTime.toString());
-      (d.head || d.body).appendChild(s);
+  async loadDisqus(){
+     (await function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://testpage-com.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + new Date());
+    s.setAttribute('data-theme', 'dark');
+    (d.head || d.body).appendChild(s);
     })();
   }
 }
