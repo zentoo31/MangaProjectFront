@@ -1,18 +1,18 @@
-import { Component,ChangeDetectionStrategy,signal, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {FormControl, FormsModule, ReactiveFormsModule, Validators, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import { UsersService } from '../service/users.service';
 import {merge} from 'rxjs';
-
+import { RouterLink } from '@angular/router';
+import { UsersService } from '../service/users.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatIcon, MatButtonModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatIcon, MatButtonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -24,7 +24,7 @@ export class LoginComponent {
   errorMessage2 = signal('');
   message!: String;
   formulario: FormGroup;
-
+  router = inject(Router);
   constructor(){
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
@@ -73,14 +73,13 @@ export class LoginComponent {
         const response = await this.userService.login(this.formulario.value);
         if (response && response.sucess) {
           this.message = "Inicio de sesión exitoso";
-          console.log(response);
         }
+        this.router.navigate(['/user']).then(() => {
+          globalThis.window.location.reload();
+        });
       } catch (error: any) {
         this.message = error.message;
       }
     }
   }
-
-
-
 }

@@ -34,6 +34,12 @@ export class UsersService {
     }
   }
 
+  logout(){
+    return this.httpClient.post<any>(`${this.baseUrl}/logout`, {}, {withCredentials: true});
+  }
+
+
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ha ocurrido un error inesperado';
     if (error.error instanceof ErrorEvent) {
@@ -47,4 +53,8 @@ export class UsersService {
     }
     return throwError(() => new Error(errorMessage));
   }
+
+
+
+
 }

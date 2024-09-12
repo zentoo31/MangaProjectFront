@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, output } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { fadeAnimation} from '../../animation';
-
+import { AuthService } from '../service/auth.service';
+import { map } from 'rxjs';
+import { UsersService } from '../service/users.service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -13,6 +15,11 @@ import { fadeAnimation} from '../../animation';
 })
 export class HeaderComponent  {
   mode: number = 0;
+  authService = inject(AuthService);
+  isAuthenticated: boolean = false;
+  userService = inject(UsersService);
+
+
   constructor(private router: Router) {}
   numberEmit = output<number>();
 
@@ -31,5 +38,29 @@ export class HeaderComponent  {
 
   goTo(ruta: String){
     this.router.navigate([ruta]);
+  }
+
+  ngOnInit():void{
+    this.authService.checkAuth().subscribe({
+      next: (authenticated) => {
+        this.isAuthenticated = authenticated;
+      },
+      error: () => {
+        this.isAuthenticated = false;
+      }
+    });    
+  }
+
+ logout() {
+   this.userService.logout().subscribe({
+      next: (response) => {
+        console.log(response.message);
+        this.ngOnInit();
+        globalThis.window.location.reload();
+      },
+      error: (error) => {
+        console.error('Error al cerrar sesión', error);
+      }
+    });
   }
 }

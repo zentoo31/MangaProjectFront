@@ -19,8 +19,15 @@
         </form>
         
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-primary me-2" (click)="goTo('/login')">Iniciar sesión</button>
-            <button type="button" class="btn btn-primary me-2" (click)="goTo('/register')">Registrarse</button>
+            @if (isAuthenticated) {
+                <a [routerLink]="['/user']">
+                    <img src="https://static.vecteezy.com/system/resources/previews/043/117/086/non_2x/illustration-of-boy-profile-anime-style-black-silhouette-isolated-on-white-background-free-vector.jpg" alt="" class="rounded-circle me-2" width="32" height="32">
+                </a>
+                <button type="button" class="btn btn-primary me-2" (click)="logout()">Cerrar Sesión</button>
+            }@else{
+                <button type="button" class="btn btn-primary me-2" (click)="goTo('/login')">Iniciar sesión</button>
+                <button type="button" class="btn btn-primary me-2" (click)="goTo('/register')">Registrarse</button>
+            }
             <button type="button" class="btn btn-primary" (click)="actualizarBotonUI(); emitNumber()">
                 @if(mode == 0){ 
                     <i class="bi bi-brightness-high-fill"></i>

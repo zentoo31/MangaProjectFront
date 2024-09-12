@@ -6,6 +6,7 @@
   import {MatInputModule} from '@angular/material/input';
   import {MatButtonModule} from '@angular/material/button';
   import {merge} from 'rxjs';
+  import { RouterLink } from '@angular/router';
   import {toSignal} from '@angular/core/rxjs-interop';
   import {map} from 'rxjs/operators';
   import { UsersService } from '../service/users.service';
@@ -13,7 +14,7 @@
   @Component({
     selector: 'app-register',
     standalone: true,
-    imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatIcon, MatButtonModule],
+    imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatIcon, MatButtonModule, RouterLink],
     templateUrl: './register.component.html',
     styleUrl: './register.component.css'
   })
