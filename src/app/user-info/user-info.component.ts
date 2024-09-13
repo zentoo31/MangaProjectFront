@@ -11,7 +11,7 @@ import { User } from './user';
 })
 export class UserInfoComponent {
   user: User | undefined;
-  
+  isDisabled: boolean = true;
   userInfoService = inject(UserInfoService);
   
   ngOnInit(){
@@ -25,4 +25,11 @@ export class UserInfoComponent {
       console.error('Error fetching user:', error);
     });;
   }
+
+  onClickEdit(){
+    this.isDisabled = !this.isDisabled;
+  }
+
+  
+
 }

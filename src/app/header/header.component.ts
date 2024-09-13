@@ -3,8 +3,10 @@ import { Component, inject, output } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { fadeAnimation} from '../../animation';
 import { AuthService } from '../service/auth.service';
-import { map } from 'rxjs';
 import { UsersService } from '../service/users.service';
+import { UserInfoService } from '../service/user-info.service';
+import { User } from '../user-info/user';
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -13,15 +15,17 @@ import { UsersService } from '../service/users.service';
   styleUrl: './header.component.css',
   animations: [fadeAnimation]
 })
+
 export class HeaderComponent  {
   mode: number = 0;
-  authService = inject(AuthService);
+  header: User | undefined;
   isAuthenticated: boolean = false;
+  numberEmit = output<number>();
+  authService = inject(AuthService);
   userService = inject(UsersService);
-
+  userInfoService = inject(UserInfoService);  
 
   constructor(private router: Router) {}
-  numberEmit = output<number>();
 
   sendData(inputValue: string){
     const formattedValue = inputValue.replace(/ /g, '+');
@@ -48,7 +52,8 @@ export class HeaderComponent  {
       error: () => {
         this.isAuthenticated = false;
       }
-    });    
+    });  
+    this.getHeader();  
   }
 
  logout() {
@@ -63,4 +68,13 @@ export class HeaderComponent  {
       }
     });
   }
+
+  getHeader(){
+    this.userInfoService.getHeaders().then(
+      header => this.header = header
+    ).catch( error => {
+      console.error(error);   
+    });
+  }
+
 }

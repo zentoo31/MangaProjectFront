@@ -30,6 +30,10 @@ input:active{
     border-color: #E26AF7;
 }
 
+.user-header{
+    padding: 2px;
+}
+
 a,
 a:active,
 a:hover,

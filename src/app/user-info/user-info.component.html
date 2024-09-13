@@ -1,10 +1,23 @@
 <div class="container">
-    <p>
-        {{user?.email}}
-        {{user?.role}}
-        {{user?.username}}
-        {{user?._id
-        }}
-    </p>
-    <img src="{{user?.profile_photo}}" alt="" width="100px" height="100px">
+    <h1>Mi perfil</h1>
+    <div>
+        <img src="{{user?.profile_photo}}" alt="" width="150px" height="150px" class="rounded-circle">
+        <button class="button-edit-absolute rounded-circle"><i class="bi bi-pencil-fill"></i></button>
+    </div>
+    <button class="button-edit-normal" (click)="onClickEdit()" [hidden]="!isDisabled"><i class="bi bi-pencil-fill"></i> Editar mi perfil</button>
+    <div class="info">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Usuario</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [defaultValue]="user?.username" [disabled]="isDisabled">
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Correo  </span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [defaultValue]="user?.email" [disabled]="isDisabled">
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Rol</span>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" [defaultValue]="user?.role" [disabled]="true"> 
+        </div>
+        <button class="button-edit-normal" (click)="onClickEdit()" [hidden]="isDisabled"><i class="bi bi-arrow-clockwise"></i> Actualizar</button>
+    </div>
 </div>

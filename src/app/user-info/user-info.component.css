@@ -1,0 +1,29 @@
+.container{
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+}
+
+.button-edit-absolute{
+    position: absolute;
+    border: none;
+    background-color: #856AF7;
+}
+
+.button-edit-normal{
+    border: none;
+    border-radius: 5px;
+    background-color: #856AF7;
+    margin: 15px;
+    padding: 4px;
+}
+
+img{
+    display: inline-block;
+    margin: 5px;
+    position: relative;
+}
+
+.info{
+    margin: 0px 15% 0px 15%;    
+}
