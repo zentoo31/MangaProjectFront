@@ -5,7 +5,6 @@ import { FooterComponent } from "./footer/footer.component";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { fadeAnimation } from '../animation';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -34,6 +33,8 @@ export class AppComponent{
       globalThis.document.body.classList.replace('light','dark');
     }
   }
+
+  
   ngOnInit() {
     this.router.events.subscribe(event => {
       const progressBar = globalThis?.document?.querySelector('.progress-bar') as HTMLElement;
