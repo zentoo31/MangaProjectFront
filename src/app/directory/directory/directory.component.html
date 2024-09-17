@@ -8,6 +8,7 @@
   <div class="container" style="height: auto;">
     <h1>Resultados: </h1>
     <hr>
+    
     @defer {
         <div class="row row-cols-2 row-cols-md-6 g-4">
             @for (item of mangaList; track $index) {
@@ -15,74 +16,9 @@
             }
         </div>
     }@placeholder {
-        <div class="row row-cols-2 row-cols-md-6 g-4">
-            <div class="card mb-3" style="max-width: 540px;">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="https://img.freepik.com/foto-gratis/fondo-gris-liso-alta-calidad_53876-124606.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title placeholder-glow">            
-                      <span class="placeholder col-6"></span>
-                    </h5>
-                    <p class="card-text placeholder-glow">
-                      <span class="placeholder col-7"></span>
-                      <span class="placeholder col-4"></span>
-                      <span class="placeholder col-4"></span>
-                      <span class="placeholder col-6"></span>
-                      <span class="placeholder col-8"></span>
-                    </p>
-                    <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="https://img.freepik.com/foto-gratis/fondo-gris-liso-alta-calidad_53876-124606.jpg" class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title placeholder-glow">            
-                        <span class="placeholder col-6"></span>
-                      </h5>
-                      <p class="card-text placeholder-glow">
-                        <span class="placeholder col-7"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-6"></span>
-                        <span class="placeholder col-8"></span>
-                      </p>
-                      <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="https://img.freepik.com/foto-gratis/fondo-gris-liso-alta-calidad_53876-124606.jpg" class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title placeholder-glow">            
-                        <span class="placeholder col-6"></span>
-                      </h5>
-                      <p class="card-text placeholder-glow">
-                        <span class="placeholder col-7"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-4"></span>
-                        <span class="placeholder col-6"></span>
-                        <span class="placeholder col-8"></span>
-                      </p>
-                      <a class="btn btn-primary disabled placeholder col-6" aria-disabled="true"></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
+      <div class="container">
+        <app-spinner></app-spinner>
+      </div>
     }
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">

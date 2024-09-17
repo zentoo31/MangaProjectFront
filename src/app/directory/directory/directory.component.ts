@@ -5,11 +5,11 @@ import { MangaService } from '../../service/manga.service';
 import { RouterLink } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { DOCUMENT } from '@angular/common';
+import { SpinnerComponent } from '../../util/spinner/spinner.component';
 @Component({
   selector: 'app-directory',
   standalone: true,
-  imports: [MangaComponent, RouterLink],
+  imports: [MangaComponent, RouterLink, SpinnerComponent],
   templateUrl: './directory.component.html',
   styleUrl: './directory.component.css',
   animations: [
